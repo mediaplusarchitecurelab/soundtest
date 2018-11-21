@@ -10,7 +10,7 @@ function setup() {
   //dot=
   mic = new p5.AudioIn()
   mic.start();
-  arraydot = new ARRAYDOT(50,width/2,0,width/2,height);
+  arraydot = new ARRAYDOT(50,0,height/2,width,height/2);
 }
 
 function draw() {
@@ -33,7 +33,7 @@ function DOT(x,y,dx,dy){
 		//console.log('a');
 
 		noStroke();
-		fill(200,50,50,150);
+		fill(200,50,50);
 		ellipse(this.x,this.y,this.dia,this.dia);
 		this.life-=0.5;
 		this.x-=dx;
