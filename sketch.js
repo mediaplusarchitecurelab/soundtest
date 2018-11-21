@@ -4,13 +4,13 @@ const basicdia = 15;
 
 function setup() {
   
-  createCanvas(800,600);
+  createCanvas(1024,768);
   //textAlign(LEFT,CENTER);
   ellipseMode(CENTER);
   //dot=
   mic = new p5.AudioIn()
   mic.start();
-  arraydot = new ARRAYDOT(40,0,height/2,width,height/2);
+  arraydot = new ARRAYDOT(64,0,height/3,width,height/3);
 }
 
 function draw() {
@@ -38,8 +38,8 @@ function DOT(x,y,dx,dy){
 		fill(200,50,50);
 		ellipse(this.x,this.y,this.dia,this.dia);
 		this.life-=0.5;
-		this.x-=dx;
-		this.y-=dy;
+		this.x+=dx;
+		this.y+=dy;
 		
 	}
 }
@@ -51,31 +51,31 @@ function ARRAYDOT(num,xs,ys,xe,ye){
 	this.ye=ye;
 	this.num=num;
 	this.arr=[];
-
-	//this.initialize = function(){
-		let dx=(xe-xs)/num;
-		let dy=(ye-ys)/num;
-
-		for(let i=0;i<num;i+=1){
-			
-			this.arr.push(new DOT(xs+dx*i,ys+dy*i,dx,dy));
-			//console.log(xs+dx*i);
-		}
+	this.dx = (xe-xs)/num;
+	this.dy = (ye-ys)/num;
+		
+	for(let i=0;i<num;i+=1){		
+		this.arr.push(new DOT(this.xs+this.dx*i,this.ys+this.dy*i,this.dx,this.dy));
+	}
 	//}
 
 	this.display = function(dias){
 		for(let i=0;i<this.arr.length;i+=1){
 			let val=this.arr[i];
 			val.display();
-			if (val.x>this.xe+basicdia/2 || val.x<this.xs-basicdia/2){
-				val.y=this.ye;
-				val.x=this.xe;
-				val.dia=basicdia;
-				if (dias>1){val.dia=basicdia*dias} 
-				//console.log('a');
+			if (val.x > this.xe +this.dx){
+				val.x= this.xs+this.dx*2;	
 			}
-
+			/*
+			if (val.x < this.xs-basicdia/2 || val.x > this.xs+basicdia/2){
+				val.y=this.ys;
+				val.x=this.xs;
+				val.dia=basicdia;
+				//if (dias>1){val.dia=basicdia*dias} 
+				console.log(val.x);
+			}
 			
+			*/
 		}
 	}
 }
