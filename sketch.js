@@ -63,8 +63,12 @@ function ARRAYDOT(num,xs,ys,xe,ye){
 		for(let i=0;i<this.arr.length;i+=1){
 			let val=this.arr[i];
 			val.display();
+
 			if (val.x > this.xe +this.dx){
-				val.x= this.xs+this.dx*2;	
+				val.x= this.xs+this.dx*2;
+				val.dia=basicdia;
+				if (dias>1){val.dia=basicdia*dias}
+					
 			}
 			/*
 			if (val.x < this.xs-basicdia/2 || val.x > this.xs+basicdia/2){
