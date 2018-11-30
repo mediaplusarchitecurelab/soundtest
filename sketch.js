@@ -10,7 +10,7 @@ function setup() {
   //dot=
   mic = new p5.AudioIn()
   mic.start();
-  arraydot = new ARRAYDOT(64,0,height/3,width,height/3);
+  arraydot = new ARRAYDOT(64,0,180,width,180);
 }
 
 function draw() {
@@ -70,16 +70,13 @@ function ARRAYDOT(num,xs,ys,xe,ye){
 				if (dias>1){val.dia=basicdia*dias}
 					
 			}
-			/*
-			if (val.x < this.xs-basicdia/2 || val.x > this.xs+basicdia/2){
-				val.y=this.ys;
-				val.x=this.xs;
+
+			if (val.y > this.ye - this.dy *2 ){
+				val.y= this.ys;
 				val.dia=basicdia;
-				//if (dias>1){val.dia=basicdia*dias} 
-				console.log(val.x);
+				if (dias>1){val.dia=basicdia*dias}
+					
 			}
-			
-			*/
 		}
 	}
 }
